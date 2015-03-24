@@ -1,0 +1,527 @@
+/*
+Grammar for PALOMA models
+*/
+
+options {
+    STATIC = false ;
+}
+
+PARSER_BEGIN(PalomaParser)
+
+package quanticol.ed.ac.uk.paloma.realparser;
+
+import quanticol.ed.ac.uk.paloma.framework.GlobalManager;
+import quanticol.ed.ac.uk.paloma.framework.Agent;
+import quanticol.ed.ac.uk.paloma.model.ExpEvaluator;
+import quanticol.ed.ac.uk.paloma.model.State;
+import quanticol.ed.ac.uk.paloma.model.action.*;
+import quanticol.ed.ac.uk.paloma.utality.Utality;
+
+/*package realparser;
+
+import framework.GlobalManager;
+import framework.Agent;
+import model.ExpEvaluator;
+import model.State;
+import model.action.*;
+import utality.Utality;*/
+
+
+public class PalomaParser {
+       
+    public PalomaParser() {
+        this(new java.io.StringReader(""));
+    }
+
+    public void parseFromString( String modelDef ) throws ParseException, TokenMgrError, NumberFormatException {
+        this.ReInit(new java.io.StringReader(modelDef));
+        this.Start();
+    }
+
+    public void parseFromFile( String filename ) throws ParseException, TokenMgrError, NumberFormatException {
+        try { this.ReInit(new java.io.FileReader(filename)); }
+        catch(java.io.IOException e) {throw new ParseException("Error while opening file " + filename + ": " + e); }
+        this.Start();
+    }
+
+}
+PARSER_END(PalomaParser)
+
+/***************************************************************
+SKIP
+***************************************************************/
+
+<DEFAULT,RESET,ID> SKIP :
+{
+  " "
+  | "\t"
+  | "\n"
+  | "\r"
+
+  | <"//" (~["\n","\r"])* ("\n"|"\r"|"\r\n")>
+  | <"/*" (~["*"])* "*" (~["/"] (~["*"])* "*")* "/">
+}
+
+
+/***************************************************************
+TOKENS
+***************************************************************/
+
+ /* LITERALS */
+TOKEN : { < #INTEGER: ("-")? ["0"-"9"] (["0"-"9"])* > }
+TOKEN : { < #FLOAT:
+                            ("-")?  (["0"-"9"])+ "." (["0"-"9"])*
+                            | ("-")?  "." (["0"-"9"])+
+                    > }
+TOKEN : { < #FLOAT_SCIENTIFIC:
+                             ("-")? (["0"-"9"])+ "." (["0"-"9"])* (<EXPONENT>)
+                            |  ("-")? "." (["0"-"9"])+ (<EXPONENT>)
+                            |  ("-")? (["0"-"9"])+ <EXPONENT>
+                    > }
+TOKEN : { < #EXPONENT: ["e","E"] (["+","-"])? (["0"-"9"])+ > }
+TOKEN: { < #LETTER: ["A"-"Z","a"-"z"] > }
+TOKEN: { < #DIGIT: ["0"-"9"] > }
+
+
+	
+/*
+IDENTIFIERS
+*/
+
+
+<DEFAULT> TOKEN : { <SECTION_STATES : "#states" > }
+<DEFAULT> TOKEN : { <SECTION_PARAM : "#params" > }
+<DEFAULT> TOKEN : { <SECTION_AGENTS : "#agents" > }
+
+<DEFAULT> TOKEN : { <KEYWORD_PARAM : "param" > }
+<DEFAULT> TOKEN : { <KEYWORD_RNG : "IR" > }
+<DEFAULT> TOKEN : { <KEYWORD_WT : "Wt" > }
+<DEFAULT> TOKEN : { <KEYWORD_PR : "Pr" > }
+
+
+<DEFAULT> TOKEN : { <EOL : ";" > }
+<DEFAULT> TOKEN : { <PLUS : "+" > }
+<DEFAULT> TOKEN : { <DOT : "." > }
+
+<DEFAULT> TOKEN : { <SEMICOLON : ":" > }
+<DEFAULT> TOKEN : { <DOLLAR : "$" > }
+
+<DEFAULT> TOKEN : { <DEFINE : ":=" > }
+
+<DEFAULT> TOKEN : { <ASSIGN : "=" > : MATH}
+<DEFAULT> TOKEN : { <LSQ : "[" >}
+<DEFAULT> TOKEN : { <RSQ : "]" >}
+<DEFAULT> TOKEN : { <LR : "(" > }
+<DEFAULT> TOKEN : { <RR : ")" > }
+<DEFAULT> TOKEN : { <QUO : "\"" > }
+<DEFAULT> TOKEN : { <SQUO : "\'" > }
+<DEFAULT> TOKEN : { <QUEST : "?" > }
+<DEFAULT> TOKEN : { <EXCL : "!" > }
+<DEFAULT> TOKEN : { <AT : "@" > }
+<DEFAULT> TOKEN : { <LBRAC : "{" > : MATH}
+<DEFAULT> TOKEN : { <RBRAC : "}" > }
+
+<DEFAULT> TOKEN : { <COMMA : "," > : SIMPLE_MATH }
+<DEFAULT> TOKEN : { <LANG : "<" > }
+<DEFAULT> TOKEN : { <RANG : ">" > }
+<DEFAULT> TOKEN : { <PARALLEL : "||" > }
+
+
+<DEFAULT> TOKEN : {<INT : <INTEGER> > }
+<DEFAULT> TOKEN : {<DOUBLE : <FLOAT>|<FLOAT_SCIENTIFIC> > }
+<DEFAULT> TOKEN: { <IDENTIFIER: <LETTER>(<LETTER>|<DIGIT>|"_"|"$"|"#")*> }
+
+<MATH> TOKEN : { <MATH_EXPR : (<DIGIT> | <LETTER> | <SYMBOL> | <SPACE> | <M_AND> | <M_OR> | <M_LINER> | <M_LINEN> | <SQUO>)+ > : DEFAULT }
+<MATH> TOKEN : { <#SPACE : " " | "\t"> }
+<MATH> TOKEN : { <#M_AND : "&&" > }
+<MATH> TOKEN : { <#M_OR : "|"> }
+<MATH> TOKEN : { <#M_LINER : "\r"> }
+<MATH> TOKEN : { <#M_LINEN : "\n"> }
+
+<SIMPLE_MATH> TOKEN : { <MATH_PARAM : (<DIGIT> | <LETTER> | <PARAM_SYMBOL> | <SPACE>)+ > : DEFAULT}
+
+TOKEN : { <#SYMBOL : [".", "=", "+", "-", "*", "/", "%", "^", "(", ")", "!", "<", ">", ",", "_", "[","]" ]> }
+TOKEN : { <#PARAM_SYMBOL : [".", "+", "-", "*", "/", "%", "^" ]> }
+
+/***********************************************
+GRAMMAR RULES
+***********************************************/
+
+void Start() throws NumberFormatException, RuntimeException, ParseException :
+{
+    Token t;
+    boolean states = false, agents = false, sub = false, comp = false, cont = false;
+}
+{		<SECTION_PARAM>
+    (
+    	 Param()
+    )*
+		<SECTION_STATES>
+		{states = true;}
+    (
+		      State()     
+    )+
+    <SECTION_AGENTS>
+    {agents = true;}
+    (
+    	 Agent()
+    )
+    { if (!states && !agents) 
+        throw new ParseException("Some model sections are missing"); 
+    }
+    <EOF>
+}
+
+void Param() throws NumberFormatException, RuntimeException, ParseException :
+{
+    Token t1,t2;
+    State st;
+    
+}
+{		
+	<KEYWORD_PARAM>
+    t1 = <IDENTIFIER>
+    <ASSIGN>
+    t2 = <MATH_EXPR>
+    <EOL> 
+    {
+        double value = ExpEvaluator.evalParamExp(t2.image);
+        if(value == Utality.ERROR_NUM) {
+            throw new ParseException("line " + t2.beginLine + " colum " + t2.beginColumn +": "+t1.image +" not correctly defined!"); 
+        }
+        if(!GlobalManager.getParamManager().isParamExist(t1.image)) {
+            GlobalManager.getParamManager().addParam(t1.image, value);        
+        } 
+    }
+}
+
+
+
+void State() throws NumberFormatException, RuntimeException, ParseException :
+{
+    Token t,x,y;
+    State st;
+    
+}
+{
+    t = <IDENTIFIER>
+    <LR>
+    x = <INT>
+    <COMMA>
+    y = <MATH_PARAM>
+    <RR>
+    {st = new State(t.image, Integer.parseInt(x.image), Integer.parseInt(y.image));}
+    <DEFINE>
+    Action(st) 
+    (
+        <PLUS> 
+        Action(st) 
+    )* 
+    <EOL> 
+    {
+        GlobalManager.getStateManager().putState(st);
+    }
+}
+
+void Action(State st) throws NumberFormatException, RuntimeException, ParseException :
+{
+    int type = Action.ACTION_TYPE_SpNoMsg;
+}
+{   
+    [   
+        LOOKAHEAD(2)
+        SpNoMsgAction(st)
+        |
+        LOOKAHEAD(2)
+        SpBrAction(st)
+        |
+        LOOKAHEAD(2)
+        SpUnAction(st)
+        |
+        LOOKAHEAD(2)
+        InBrAction(st)
+        |
+        LOOKAHEAD(2)
+        InUnAction(st)
+    ]
+}
+
+void SpNoMsgAction(State st) throws NumberFormatException, RuntimeException, ParseException :
+{
+    Token name, rate=null, nextState, x, y; 
+    String strName = null;
+    boolean paramRate = false;
+}
+{  
+    <LR>
+    [
+    	name = <IDENTIFIER>
+    	{strName = name.image;}
+    ]
+    <COMMA>
+    [
+    	rate = <MATH_PARAM>
+    ]
+    <RR>
+ 
+    <DOT>
+    nextState = <IDENTIFIER>
+    <LR>
+    x = <INT>
+    <COMMA>
+    y = <MATH_PARAM>
+    <RR>
+    {   
+        double actionRate = ExpEvaluator.evalParamExp(rate.image);
+        if(actionRate == Utality.ERROR_NUM || actionRate < 0) {
+            throw new ParseException("line " + rate.beginLine + " colum " + rate.beginColumn +": "+rate.image +" not correctly defined!"); 
+        }      
+        
+        SpNoMsgAction ac = new SpNoMsgAction(strName, actionRate, State.genStateID(nextState.image, Integer.parseInt(x.image), Integer.parseInt(y.image)));
+        st.addAction(ac);
+        if(GlobalManager.getOrphanMap().get(State.genStateID(nextState.image, Integer.parseInt(x.image), Integer.parseInt(y.image))) == null) {
+            GlobalManager.getOrphanMap().put(State.genStateID(nextState.image, Integer.parseInt(x.image), Integer.parseInt(y.image)),-1);
+        }
+    }
+}
+
+void SpBrAction(State st) throws NumberFormatException, RuntimeException, ParseException :
+{
+    Token name, rate=null, nextState, x, y, range=null; 
+    String strName = null;
+    boolean paramRate = false;
+}
+{   
+    <EXCL>
+    <LR>
+    [
+    	name = <IDENTIFIER>
+    	{strName = name.image;}
+    ]
+    <COMMA>
+    [
+    	rate = <MATH_PARAM>
+    ]
+    <RR>
+    <AT>
+    <KEYWORD_RNG>
+    <LBRAC>
+    [
+        range = <MATH_EXPR>
+    ]
+    <RBRAC>
+    <DOT>
+    nextState = <IDENTIFIER>
+    <LR>
+    x = <INT>
+    <COMMA>
+    y = <MATH_PARAM>
+    <RR>
+    {   
+        double actionRate = ExpEvaluator.evalParamExp(rate.image);
+        if(actionRate == Utality.ERROR_NUM || actionRate < 0) {
+            throw new ParseException("line " + rate.beginLine + " colum " + rate.beginColumn +": "+rate.image +" not correctly defined!"); 
+        }    
+        SpBrAction ac = new SpBrAction(strName, actionRate, range.image, State.genStateID(nextState.image, Integer.parseInt(x.image), Integer.parseInt(y.image)));
+        st.addAction(ac);
+        if(GlobalManager.getOrphanMap().get(State.genStateID(nextState.image, Integer.parseInt(x.image), Integer.parseInt(y.image))) == null) {
+            GlobalManager.getOrphanMap().put(State.genStateID(nextState.image, Integer.parseInt(x.image), Integer.parseInt(y.image)),-1);
+        }
+    }
+}
+
+void SpUnAction(State st) throws NumberFormatException, RuntimeException, ParseException :
+{
+    Token name, rate=null, nextState, x, y, range=null; 
+    String strName = null;
+    boolean paramRate = false;
+}
+{
+    <EXCL>
+    <EXCL>
+    <LR>
+    [
+    	name = <IDENTIFIER>
+    	{strName = name.image;}
+    ]
+    <COMMA>
+    [
+    	rate = <MATH_PARAM>
+    ]
+    <RR>
+    <AT>
+    <KEYWORD_RNG>
+    <LBRAC>
+    [
+        range = <MATH_EXPR>
+    ]
+    <RBRAC>
+    <DOT>
+    nextState = <IDENTIFIER>
+    <LR>
+    x = <INT>
+    <COMMA>
+    y = <MATH_PARAM>
+    <RR>
+    {   
+        double actionRate = ExpEvaluator.evalParamExp(rate.image);
+        if(actionRate == Utality.ERROR_NUM || actionRate < 0) {
+            throw new ParseException("line " + rate.beginLine + " colum " + rate.beginColumn +": "+rate.image +" not correctly defined!"); 
+        }    
+        SpUnAction ac = new SpUnAction(strName, actionRate, range.image, State.genStateID(nextState.image, Integer.parseInt(x.image), Integer.parseInt(y.image)));
+        st.addAction(ac);
+        if(GlobalManager.getOrphanMap().get(State.genStateID(nextState.image, Integer.parseInt(x.image), Integer.parseInt(y.image))) == null) {
+            GlobalManager.getOrphanMap().put(State.genStateID(nextState.image, Integer.parseInt(x.image), Integer.parseInt(y.image)),-1);
+        }
+    }
+}
+
+void InUnAction(State st) throws NumberFormatException, RuntimeException, ParseException :
+{
+    Token name, rate=null, nextState, x, y, pri=null; 
+    String strName = null;
+    boolean paramRate = false;
+}
+{   
+    <QUEST>
+    <QUEST>
+    <LR>
+    [
+    	name = <IDENTIFIER>
+    	{strName = name.image;}
+    ]
+    <COMMA>
+    [
+    	rate = <MATH_PARAM>
+    ]
+    <RR>
+    <AT>
+    <KEYWORD_WT>
+    <LBRAC>
+    [
+        pri = <MATH_EXPR>
+    ]
+    <RBRAC>
+    <DOT>
+    nextState = <IDENTIFIER>
+    <LR>
+    x = <INT>
+    <COMMA>
+    y = <MATH_PARAM>
+    <RR>
+    {   
+        double actionRate = ExpEvaluator.evalParamExp(rate.image);
+        if(actionRate == Utality.ERROR_NUM || actionRate < 0) {
+            throw new ParseException("line " + rate.beginLine + " colum " + rate.beginColumn +": "+rate.image +" not correctly defined!"); 
+        }    
+        InUnAction ac = new InUnAction(strName, actionRate, pri.image, State.genStateID(nextState.image, Integer.parseInt(x.image), Integer.parseInt(y.image)));
+        st.addAction(ac);
+        if(GlobalManager.getOrphanMap().get(State.genStateID(nextState.image, Integer.parseInt(x.image), Integer.parseInt(y.image))) == null) {
+            GlobalManager.getOrphanMap().put(State.genStateID(nextState.image, Integer.parseInt(x.image), Integer.parseInt(y.image)),-1);
+        }
+    }
+}
+
+void InBrAction(State st) throws NumberFormatException, RuntimeException, ParseException :
+{
+    Token name, rate=null, nextState, x, y, pr=null; 
+    String strName = null;
+    boolean paramRate = false;
+}
+{   
+    <QUEST>
+    <LR>
+    [
+    	name = <IDENTIFIER>
+    	{strName = name.image;}
+    ]
+    <COMMA>
+    [
+    	rate = <MATH_PARAM>
+    ]
+    <RR>
+    <AT>
+    <KEYWORD_PR>
+    <LBRAC>
+    [
+        pr = <MATH_EXPR>
+    ]
+    <RBRAC>
+    <DOT>
+    nextState = <IDENTIFIER>
+    <LR>
+    x = <INT>
+    <COMMA>
+    y = <MATH_PARAM>
+    <RR>
+    {   
+        double actionRate = ExpEvaluator.evalParamExp(rate.image);
+        if(actionRate == Utality.ERROR_NUM || actionRate < 0) {
+            throw new ParseException("line " + rate.beginLine + " colum " + rate.beginColumn +": "+rate.image +" not correctly defined!"); 
+        }    
+        InBrAction ac = new InBrAction(strName, actionRate, pr.image, State.genStateID(nextState.image, Integer.parseInt(x.image), Integer.parseInt(y.image)));
+        st.addAction(ac);
+        if(GlobalManager.getOrphanMap().get(State.genStateID(nextState.image, Integer.parseInt(x.image), Integer.parseInt(y.image))) == null) {
+            GlobalManager.getOrphanMap().put(State.genStateID(nextState.image, Integer.parseInt(x.image), Integer.parseInt(y.image)),-1);
+        }
+    }
+}
+
+
+
+void Agent() throws NumberFormatException, RuntimeException, ParseException :
+{
+    
+}
+{
+  
+    AtomAgent() 
+    (
+        <PARALLEL> 
+        AtomAgent() 
+    )*
+    {
+        for(String orphan: GlobalManager.getOrphanMap().keySet()) {
+            if(GlobalManager.getStateManager().getState(orphan) == null) {
+                int index = orphan.indexOf("(");
+                String name = orphan.substring(0,index);
+                String loc = orphan.substring(index);
+                loc = loc.substring(1,loc.indexOf(")"));
+                String[] xy = loc.split(",");
+                String x = xy[0]; String y = xy[1];
+                State st = new State(name, Integer.parseInt(x), Integer.parseInt(y));
+                GlobalManager.getStateManager().putState(st);       
+            }        
+        }    
+    } 
+}
+
+void AtomAgent() throws NumberFormatException, RuntimeException, ParseException :
+{
+    Token t,x,y,t2=null;
+    State st;
+    int num = 1;
+}
+{
+    t = <IDENTIFIER>
+    <LR>
+    x = <INT>
+    <COMMA>
+    y = <MATH_PARAM>
+    <RR>
+    (
+    	<LSQ>
+    	t2 = <INT>
+    	<RSQ>
+    )?
+    {	
+    	if(t2 != null) {
+    		num = Integer.parseInt(t2.image);
+    	}
+    	
+    	Agent ag = new Agent(State.genStateID(t.image, Integer.parseInt(x.image), Integer.parseInt(y.image)), num);
+      	GlobalManager.addAgent(ag);
+    	
+    	
+    }
+}

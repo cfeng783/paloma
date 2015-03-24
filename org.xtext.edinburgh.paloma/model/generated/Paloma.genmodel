@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.xtext.edinburgh.paloma/src-gen" editDirectory="/org.xtext.edinburgh.paloma.edit/src"
+    editorDirectory="/org.xtext.edinburgh.paloma.editor/src" modelPluginID="org.xtext.edinburgh.paloma"
+    forceOverwrite="true" modelName="Paloma" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="org.xtext.edinburgh.paloma.edit"
+    editorPluginID="org.xtext.edinburgh.paloma.editor" runtimeVersion="2.10">
+  <genPackages prefix="Paloma" basePackage="org.xtext.edinburgh" disposableProviderFactory="true"
+      fileExtensions="paloma" ecorePackage="Paloma.ecore#/">
+    <genClasses ecoreClass="Paloma.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Paloma.ecore#//Model/params"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Paloma.ecore#//Model/states"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Paloma.ecore#//Model/population"/>
+    </genClasses>
+    <genClasses ecoreClass="Paloma.ecore#//Param">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Paloma.ecore#//Param/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Paloma.ecore#//Param/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Paloma.ecore#//AgentState">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Paloma.ecore#//AgentState/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Paloma.ecore#//AgentState/prefixs"/>
+    </genClasses>
+    <genClasses ecoreClass="Paloma.ecore#//Prefix">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Paloma.ecore#//Prefix/action"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Paloma.ecore#//Prefix/continue"/>
+    </genClasses>
+    <genClasses ecoreClass="Paloma.ecore#//ACTION">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Paloma.ecore#//ACTION/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Paloma.ecore#//ACTION/rate"/>
+    </genClasses>
+    <genClasses ecoreClass="Paloma.ecore#//ACT_SpNoMsg"/>
+    <genClasses ecoreClass="Paloma.ecore#//ACT_SpBr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Paloma.ecore#//ACT_SpBr/range"/>
+    </genClasses>
+    <genClasses ecoreClass="Paloma.ecore#//ACT_SpUni">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Paloma.ecore#//ACT_SpUni/range"/>
+    </genClasses>
+    <genClasses ecoreClass="Paloma.ecore#//ACT_InBr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Paloma.ecore#//ACT_InBr/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Paloma.ecore#//ACT_InUni">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Paloma.ecore#//ACT_InUni/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Paloma.ecore#//IRange"/>
+    <genClasses ecoreClass="Paloma.ecore#//PR_Expr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Paloma.ecore#//PR_Expr/prE"/>
+    </genClasses>
+    <genClasses ecoreClass="Paloma.ecore#//Terminal_PR_Expr">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Paloma.ecore#//Terminal_PR_Expr/linkedParam"/>
+    </genClasses>
+    <genClasses ecoreClass="Paloma.ecore#//RATE_Expr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Paloma.ecore#//RATE_Expr/rt"/>
+    </genClasses>
+    <genClasses ecoreClass="Paloma.ecore#//Terminal_RATE_Expr">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Paloma.ecore#//Terminal_RATE_Expr/linkedParam"/>
+    </genClasses>
+    <genClasses ecoreClass="Paloma.ecore#//AGENT_NUM">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Paloma.ecore#//AGENT_NUM/type"/>
+    </genClasses>
+    <genClasses ecoreClass="Paloma.ecore#//POPULATION">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Paloma.ecore#//POPULATION/popu"/>
+    </genClasses>
+    <genClasses ecoreClass="Paloma.ecore#//AGENTS">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Paloma.ecore#//AGENTS/type"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

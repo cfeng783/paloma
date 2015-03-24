@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="paloma" nsURI="http://www.xtext.org/edinburgh/Paloma" nsPrefix="paloma">
+  <eClassifiers xsi:type="ecore:EClass" name="Model">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
+        eType="#//Param" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
+        eType="#//AgentState" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="population" eType="#//POPULATION"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Param">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AgentState">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="prefixs" upperBound="-1"
+        eType="#//Prefix" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Prefix">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="#//ACTION"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="continue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ACTION">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rate" eType="#//RATE_Expr"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ACT_SpNoMsg" eSuperTypes="#//ACTION"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ACT_SpBr" eSuperTypes="#//ACTION">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="range" eType="#//IRange"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ACT_SpUni" eSuperTypes="#//ACTION">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="range" eType="#//IRange"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ACT_InBr" eSuperTypes="#//ACTION">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//PR_Expr"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ACT_InUni" eSuperTypes="#//ACTION">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//PR_Expr"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IRange"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PR_Expr" eSuperTypes="#//Terminal_PR_Expr">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="prE" upperBound="-1" eType="#//Terminal_PR_Expr"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Terminal_PR_Expr">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="linkedParam" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RATE_Expr" eSuperTypes="#//IRange #//Terminal_RATE_Expr">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rt" upperBound="-1" eType="#//Terminal_RATE_Expr"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Terminal_RATE_Expr">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="linkedParam" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AGENT_NUM" eSuperTypes="#//Terminal_PR_Expr">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="POPULATION">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="popu" upperBound="-1" eType="#//AGENTS"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AGENTS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

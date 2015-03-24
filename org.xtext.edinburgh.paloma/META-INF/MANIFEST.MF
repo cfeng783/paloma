@@ -1,0 +1,35 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.xtext.edinburgh.paloma
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.1
+Bundle-SymbolicName: org.xtext.edinburgh.paloma; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext;visibility:=reexport,
+ org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
+ org.eclipse.xtext.generator;resolution:=optional,
+ org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional,
+ org.eclipse.emf.codegen.ecore;resolution:=optional,
+ org.eclipse.emf.mwe.utils;resolution:=optional,
+ org.eclipse.emf.mwe2.launch;resolution:=optional,
+ org.eclipse.xtext.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.eclipse.xtext.xbase.lib,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types,
+ org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.xtext.edinburgh,
+ org.xtext.edinburgh.services,
+ org.xtext.edinburgh.paloma,
+ org.xtext.edinburgh.paloma.impl,
+ org.xtext.edinburgh.paloma.util,
+ org.xtext.edinburgh.serializer,
+ org.xtext.edinburgh.parser.antlr,
+ org.xtext.edinburgh.parser.antlr.internal,
+ org.xtext.edinburgh.validation,
+ org.xtext.edinburgh.scoping,
+ org.xtext.edinburgh.generator,
+ org.xtext.edinburgh.formatting

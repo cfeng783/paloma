@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.xtext.edinburgh.paloma.sdk_1.0.0.qualifier.jar" id="org.xtext.edinburgh.paloma.sdk" version="1.0.0.qualifier">
+      <category name="paloma"/>
+   </feature>
+   <category-def name="paloma" label="paloma"/>
+</site>

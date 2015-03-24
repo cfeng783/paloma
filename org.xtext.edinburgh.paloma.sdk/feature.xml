@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.xtext.edinburgh.paloma.sdk"
+      label="Paloma SDK Feature "
+      version="1.0.1">
+
+   <plugin
+         id="org.xtext.edinburgh.paloma"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.xtext.edinburgh.paloma.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="quanticol.ed.ac.uk.paloma.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

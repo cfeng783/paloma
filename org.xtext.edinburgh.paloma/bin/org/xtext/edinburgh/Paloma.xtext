@@ -1,0 +1,86 @@
+grammar org.xtext.edinburgh.Paloma with org.eclipse.xtext.common.Terminals
+
+generate paloma "http://www.xtext.org/edinburgh/Paloma"
+
+Model:
+	'#params'
+	params+=Param*
+	'#states'
+	states+=AgentState+ 
+	'#agents'
+	population=POPULATION;
+
+Param:
+	'param' name=ID '=' value=MATH_Expr ";"
+;
+
+AgentState:
+	name=AGENT ":=" prefixs+=Prefix ('+' prefixs+=Prefix)* ";"
+;
+
+Prefix:
+	action=ACTION continue=AGENT
+;
+
+ACTION:
+	ACT_SpNoMsg | ACT_SpBr | ACT_SpUni | ACT_InBr | ACT_InUni
+;
+
+ACT_SpNoMsg: '(' name=ID ',' rate=RATE_Expr ')' '.';
+ACT_SpBr:'!(' name=ID ',' rate=RATE_Expr ')@' 'IR' '{' range=IRange '}.';
+ACT_SpUni:'!!(' name=ID ',' rate=RATE_Expr ')@' 'IR' '{' range=IRange '}.';
+ACT_InBr: '?(' name=ID ',' rate=RATE_Expr ')@' 'Pr' '{' value=PR_Expr '}.';
+ACT_InUni: '??(' name=ID ',' rate=RATE_Expr ')@' 'Wt' '{' value=PR_Expr '}.';
+
+IRange:'local' | 'all' | ('range' '(' RATE_Expr ')') | (LOC (',' LOC)*);
+
+PR_Expr:
+	prE+=Terminal_PR_Expr (MATH_OP prE+=Terminal_PR_Expr)*
+;
+
+Terminal_PR_Expr :
+	'(' PR_Expr ')' |
+	(NUMBER | linkedParam=ID | Dist | AGENT_NUM)
+;
+
+RATE_Expr:
+	rt+=Terminal_RATE_Expr (MATH_OP rt+=Terminal_RATE_Expr)*
+;
+
+Terminal_RATE_Expr:
+	'(' RATE_Expr ')' |
+	(NUMBER | linkedParam=ID)
+;
+
+Dist: 'dist' '(' ('loc_s'|'loc_r'|LOC) ',' ('loc_s'|'loc_r'|LOC) ')';
+AGENT_NUM: '|' type=AGENT '|';
+
+POPULATION:
+	popu+=AGENTS ('||' popu+=AGENTS )*
+;
+AGENTS:
+	type=AGENT ('[' INT ']')?
+;
+
+
+
+
+//terminal XINT: ('0'..'9')+;
+terminal DOUBLE: ('0'..'9')+ '.' ('0'..'9')+;
+terminal EXPONENT: ('e'|'E') ('+'|'-')?('0'..'9')+;
+terminal DOUBLE_SCIENTIFIC: ("0".."9")+ "." ("0".."9")* EXPONENT
+                            |  ("0".."9")+ EXPONENT;
+MATH_OP: ('^' | '+' | '-' | '*' | '/' | '%');
+
+NUMBER: (INT | DOUBLE | DOUBLE_SCIENTIFIC);
+LOC: '(' INT ',' INT ')';
+AGENT: ID LOC;
+
+MATH_Expr :
+  Terminal_Math_Expr (MATH_OP Terminal_Math_Expr)*
+;
+ 
+Terminal_Math_Expr :
+  '(' MATH_Expr ')' |
+  NUMBER
+;
