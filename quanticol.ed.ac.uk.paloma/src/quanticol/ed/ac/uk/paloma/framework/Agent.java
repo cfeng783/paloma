@@ -41,8 +41,20 @@ public class Agent{
 				propensityFuncs.add(pf);
 			}else if(ac.getType() == Action.ACTION_TYPE_SpUn) {
 				SpUnAction spUnAc = (SpUnAction) ac;
-				PropensityFunc pf = new PropensityFunc(stateID, ac, spUnAc.getRate());
-				propensityFuncs.add(pf);
+                ArrayList<String> pontentialReceivers = new ArrayList<String>();
+                for(String stateKey: GlobalManager.getStateManager().getStateMap().keySet()) {
+                    State receiverState = GlobalManager.getStateManager().getStateMap().get(stateKey);
+                    for(Action reaction: receiverState.getActionList()) {
+                        if(reaction.getType() == Action.ACTION_TYPE_InUn && reaction.getName().equals(ac.getName())) {
+                            pontentialReceivers.add(stateKey);
+                        }
+                    }
+                }
+                
+                PropensityFunc pf = new PropensityFunc(stateID, ac, spUnAc.getRate());
+                
+                pf.setPotentialReceivers(pontentialReceivers);
+                propensityFuncs.add(pf);
 			}else {
 				IndActions.add(ac);
 			}

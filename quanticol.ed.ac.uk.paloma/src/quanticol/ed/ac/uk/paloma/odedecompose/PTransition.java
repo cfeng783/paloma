@@ -54,19 +54,19 @@ public class PTransition {
 		}else {
 			return ret;
 		}
-//		if(momentFactors.size() == 2) {
-//			ret += "*" + MomentScripter.getCovIndex(momentFactors.get(0).getState(), momentFactors.get(1).getState(), covIndexMap, indexMap);
-//		}else {
-//			ret += "*y(" + indexMap.get(momentFactors.get(0).getState()) + ")";
-//		}
-		for(MomentItem mf: momentFactors){
-			if(mf.getOrder() == 1) {
-				ret += "*y(" + indexMap.get(mf.getState()) + ")";
-			}else {
-				System.err.println("ode error");
-				// no possibility to beyond 1
-			}
+		if(momentFactors.size() == 2) {
+			ret += "*" + MomentScripter.getCovIndex(momentFactors.get(0).getState(), momentFactors.get(1).getState(), covIndexMap, indexMap);
+		}else {
+			ret += "*y(" + indexMap.get(momentFactors.get(0).getState()) + ")";
 		}
+//		for(MomentItem mf: momentFactors){
+//			if(mf.getOrder() == 1) {
+//				ret += "*y(" + indexMap.get(mf.getState()) + ")";
+//			}else {
+//				System.err.println("ode error");
+//				// no possibility to beyond 1
+//			}
+//		}
 		
 		return ret;
 	}
