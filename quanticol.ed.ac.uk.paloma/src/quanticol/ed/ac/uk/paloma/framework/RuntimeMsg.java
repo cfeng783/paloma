@@ -4,6 +4,10 @@ import java.util.HashMap;
 
 import quanticol.ed.ac.uk.paloma.model.Loc;
 
+
+/**
+ * A runtime msg
+ */
 public class RuntimeMsg {
 	public final static int TYPE_Br = 1001;
 	public final static int TYPE_Un = 1002;

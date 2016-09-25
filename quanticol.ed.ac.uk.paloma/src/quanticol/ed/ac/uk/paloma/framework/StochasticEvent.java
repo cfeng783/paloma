@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import quanticol.ed.ac.uk.paloma.utality.Utality;
 import quanticol.ed.ac.uk.paloma.model.action.PropensityFunc;
 
+
+/**
+ * defines the SSA
+ */
 public class StochasticEvent extends Event{
 	ArrayList<PropensityFunc> pfArray = new ArrayList<PropensityFunc>();
 	int chosenIndex;

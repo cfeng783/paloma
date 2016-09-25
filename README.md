@@ -1,7 +1,9 @@
 # paloma
 This is the source code of the Eclipse Plug-in for PALOMA. 
 
-All PALOMA features are defined in quanticol.ed.ac.uk.paloma.   Need to export the project(quanticol.ed.ac.uk.paloma) to a runnable Jar before it can be included in a plugin project!
+xtext project defines the syntax of PALOMA, ui project defines the plugin UI. All PALOMA features (parsing, simulation, ploting) are defined in quanticol.ed.ac.uk.paloma. The sdk project depends on the ui, xtext,  and quanticol.ed.ac.uk.paloma projects. Note that you need to export the project(quanticol.ed.ac.uk.paloma) to a runnable Jar file before it can be included in a plugin project!
+
+
 
 
 

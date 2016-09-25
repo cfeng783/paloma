@@ -9,6 +9,9 @@ import quanticol.ed.ac.uk.paloma.model.action.Action;
 import quanticol.ed.ac.uk.paloma.model.action.SpBrAction;
 import quanticol.ed.ac.uk.paloma.model.action.SpUnAction;
 
+/**
+ * a utality class for checking the neighbourhood relation of agent types.
+ */
 public class Decomposer {
 	public final static int ONE_HOP_NEIGHBOR = 1;
 	public final static int TWO_HOP_NEIGHBOR = 2;

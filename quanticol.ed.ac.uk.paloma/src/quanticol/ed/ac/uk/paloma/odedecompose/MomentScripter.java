@@ -14,6 +14,9 @@ import quanticol.ed.ac.uk.paloma.model.action.SpNoMsgAction;
 import quanticol.ed.ac.uk.paloma.model.action.SpUnAction;
 import quanticol.ed.ac.uk.paloma.framework.GlobalManager;
 
+/**
+ * The matlab scripter for generating matlab scripts for moments
+ */
 public class MomentScripter {
 	public final static int FIRST_MOMENT = 1001;
 	public final static int SECOND_MOMENT = 1002;

@@ -15,6 +15,9 @@ import quanticol.ed.ac.uk.paloma.model.action.SpNoMsgAction;
 import quanticol.ed.ac.uk.paloma.model.action.SpUnAction;
 import quanticol.ed.ac.uk.paloma.utality.Utality;
 
+/*
+ * An agent type like S(L)
+ */
 public class Agent{
 	String stateID;
 	ArrayList<Action> IndActions;

@@ -6,6 +6,11 @@ import java.util.HashMap;
 
 import quanticol.ed.ac.uk.paloma.model.State;
 
+/**
+ * The counter of agent populations, used to create traces for plotting.
+ *
+ */
+
 public class Counter {
 	final static double DEFAULT_TIME_POINTS = 199.0;
 	double finalTime;

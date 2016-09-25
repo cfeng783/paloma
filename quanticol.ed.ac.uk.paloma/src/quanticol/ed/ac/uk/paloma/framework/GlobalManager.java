@@ -14,6 +14,10 @@ import quanticol.ed.ac.uk.paloma.model.action.Action;
 import quanticol.ed.ac.uk.paloma. model.action.InUnAction;
 import quanticol.ed.ac.uk.paloma.facility.PlotVarDefiner;
 
+
+/**
+ *The gobal manager of all the resources to simulate a model
+ */
 public class GlobalManager {
 	static StateManager stateManager;
 	static LocManager locationManager;

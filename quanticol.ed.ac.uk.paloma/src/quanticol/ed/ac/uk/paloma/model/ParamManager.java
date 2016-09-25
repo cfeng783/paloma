@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 import quanticol.ed.ac.uk.paloma.utality.Utality;
 
+
+
 public class ParamManager {
 	HashMap<String, Double> paramMap = new HashMap<String, Double>();
 	

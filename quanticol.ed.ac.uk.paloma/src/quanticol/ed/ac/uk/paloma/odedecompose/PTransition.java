@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import quanticol.ed.ac.uk.paloma.model.ConstExp;
-
+/**
+ * A population level transition
+ */
 public class PTransition {
 	private String constFactor; //constant factors in rate expr
 	private ArrayList<MomentItem> momentFactors = new ArrayList<MomentItem>(); //moment factor(state population variables) in rate
