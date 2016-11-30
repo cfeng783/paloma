@@ -1,0 +1,341 @@
+#params
+param o = 10;
+param d = 1;
+param rb = 2;
+param rw = 1;
+
+#states
+Station(0,0):= !(BikeAvailable_0,10.0)@IR{range(d)}.Station(0,0)+ !(SlotAvailable_0,10.0)@IR{range(d)}.Station(0,0);
+Station(0,1):= !(BikeAvailable_1,10.0)@IR{range(d)}.Station(0,1)+ !(SlotAvailable_1,10.0)@IR{range(d)}.Station(0,1);
+Station(0,2):= !(BikeAvailable_2,10.0)@IR{range(d)}.Station(0,2)+ !(SlotAvailable_2,10.0)@IR{range(d)}.Station(0,2);
+Station(0,3):= !(BikeAvailable_3,10.0)@IR{range(d)}.Station(0,3)+ !(SlotAvailable_3,10.0)@IR{range(d)}.Station(0,3);
+Station(1,0):= !(BikeAvailable_4,10.0)@IR{range(d)}.Station(1,0)+ !(SlotAvailable_4,10.0)@IR{range(d)}.Station(1,0);
+Station(1,1):= !(BikeAvailable_5,10.0)@IR{range(d)}.Station(1,1)+ !(SlotAvailable_5,10.0)@IR{range(d)}.Station(1,1);
+Station(1,2):= !(BikeAvailable_6,10.0)@IR{range(d)}.Station(1,2)+ !(SlotAvailable_6,10.0)@IR{range(d)}.Station(1,2);
+Station(1,3):= !(BikeAvailable_7,10.0)@IR{range(d)}.Station(1,3)+ !(SlotAvailable_7,10.0)@IR{range(d)}.Station(1,3);
+Station(2,0):= !(BikeAvailable_8,10.0)@IR{range(d)}.Station(2,0)+ !(SlotAvailable_8,10.0)@IR{range(d)}.Station(2,0);
+Station(2,1):= !(BikeAvailable_9,10.0)@IR{range(d)}.Station(2,1)+ !(SlotAvailable_9,10.0)@IR{range(d)}.Station(2,1);
+Station(2,2):= !(BikeAvailable_10,10.0)@IR{range(d)}.Station(2,2)+ !(SlotAvailable_10,10.0)@IR{range(d)}.Station(2,2);
+Station(2,3):= !(BikeAvailable_11,10.0)@IR{range(d)}.Station(2,3)+ !(SlotAvailable_11,10.0)@IR{range(d)}.Station(2,3);
+Station(3,0):= !(BikeAvailable_12,10.0)@IR{range(d)}.Station(3,0)+ !(SlotAvailable_12,10.0)@IR{range(d)}.Station(3,0);
+Station(3,1):= !(BikeAvailable_13,10.0)@IR{range(d)}.Station(3,1)+ !(SlotAvailable_13,10.0)@IR{range(d)}.Station(3,1);
+Station(3,2):= !(BikeAvailable_14,10.0)@IR{range(d)}.Station(3,2)+ !(SlotAvailable_14,10.0)@IR{range(d)}.Station(3,2);
+Station(3,3):= !(BikeAvailable_15,10.0)@IR{range(d)}.Station(3,3)+ !(SlotAvailable_15,10.0)@IR{range(d)}.Station(3,3);
+
+Slot(0,0):= ??(Return,1)@Wt{1}.Bike(0,0);
+Bike(0,0):= ??(Borrow,1)@Wt{1}.Slot(0,0);
+Slot(0,1):= ??(Return,1)@Wt{1}.Bike(0,1);
+Bike(0,1):= ??(Borrow,1)@Wt{1}.Slot(0,1);
+Slot(0,2):= ??(Return,1)@Wt{1}.Bike(0,2);
+Bike(0,2):= ??(Borrow,1)@Wt{1}.Slot(0,2);
+Slot(0,3):= ??(Return,1)@Wt{1}.Bike(0,3);
+Bike(0,3):= ??(Borrow,1)@Wt{1}.Slot(0,3);
+Slot(1,0):= ??(Return,1)@Wt{1}.Bike(1,0);
+Bike(1,0):= ??(Borrow,1)@Wt{1}.Slot(1,0);
+Slot(1,1):= ??(Return,1)@Wt{1}.Bike(1,1);
+Bike(1,1):= ??(Borrow,1)@Wt{1}.Slot(1,1);
+Slot(1,2):= ??(Return,1)@Wt{1}.Bike(1,2);
+Bike(1,2):= ??(Borrow,1)@Wt{1}.Slot(1,2);
+Slot(1,3):= ??(Return,1)@Wt{1}.Bike(1,3);
+Bike(1,3):= ??(Borrow,1)@Wt{1}.Slot(1,3);
+Slot(2,0):= ??(Return,1)@Wt{1}.Bike(2,0);
+Bike(2,0):= ??(Borrow,1)@Wt{1}.Slot(2,0);
+Slot(2,1):= ??(Return,1)@Wt{1}.Bike(2,1);
+Bike(2,1):= ??(Borrow,1)@Wt{1}.Slot(2,1);
+Slot(2,2):= ??(Return,1)@Wt{1}.Bike(2,2);
+Bike(2,2):= ??(Borrow,1)@Wt{1}.Slot(2,2);
+Slot(2,3):= ??(Return,1)@Wt{1}.Bike(2,3);
+Bike(2,3):= ??(Borrow,1)@Wt{1}.Slot(2,3);
+Slot(3,0):= ??(Return,1)@Wt{1}.Bike(3,0);
+Bike(3,0):= ??(Borrow,1)@Wt{1}.Slot(3,0);
+Slot(3,1):= ??(Return,1)@Wt{1}.Bike(3,1);
+Bike(3,1):= ??(Borrow,1)@Wt{1}.Slot(3,1);
+Slot(3,2):= ??(Return,1)@Wt{1}.Bike(3,2);
+Bike(3,2):= ??(Borrow,1)@Wt{1}.Slot(3,2);
+Slot(3,3):= ??(Return,1)@Wt{1}.Bike(3,3);
+Bike(3,3):= ??(Borrow,1)@Wt{1}.Slot(3,3);
+
+Pedestrian(0,0):=(seekBike,0.4).SeekBike(0,0)+(walk,rw/2).Pedestrian(1,0)+(walk,rw/2).Pedestrian(0,1);
+Pedestrian(0,1):=(seekBike,0.4).SeekBike(0,1)+(walk,rw/3).Pedestrian(0,0)+(walk,rw/3).Pedestrian(1,1)+(walk,rw/3).Pedestrian(0,2);
+Pedestrian(0,2):=(seekBike,0.4).SeekBike(0,2)+(walk,rw/3).Pedestrian(0,1)+(walk,rw/3).Pedestrian(1,2)+(walk,rw/3).Pedestrian(0,3);
+Pedestrian(0,3):=(seekBike,0.4).SeekBike(0,3)+(walk,rw/2).Pedestrian(0,2)+(walk,rw/2).Pedestrian(1,3);
+Pedestrian(1,0):=(seekBike,0.4).SeekBike(1,0)+(walk,rw/3).Pedestrian(0,0)+(walk,rw/3).Pedestrian(2,0)+(walk,rw/3).Pedestrian(1,1);
+Pedestrian(1,1):=(seekBike,0.4).SeekBike(1,1)+(walk,rw/4).Pedestrian(0,1)+(walk,rw/4).Pedestrian(1,0)+(walk,rw/4).Pedestrian(2,1)+(walk,rw/4).Pedestrian(1,2);
+Pedestrian(1,2):=(seekBike,0.4).SeekBike(1,2)+(walk,rw/4).Pedestrian(0,2)+(walk,rw/4).Pedestrian(1,1)+(walk,rw/4).Pedestrian(2,2)+(walk,rw/4).Pedestrian(1,3);
+Pedestrian(1,3):=(seekBike,0.4).SeekBike(1,3)+(walk,rw/3).Pedestrian(0,3)+(walk,rw/3).Pedestrian(1,2)+(walk,rw/3).Pedestrian(2,3);
+Pedestrian(2,0):=(seekBike,0.4).SeekBike(2,0)+(walk,rw/3).Pedestrian(1,0)+(walk,rw/3).Pedestrian(3,0)+(walk,rw/3).Pedestrian(2,1);
+Pedestrian(2,1):=(seekBike,0.4).SeekBike(2,1)+(walk,rw/4).Pedestrian(1,1)+(walk,rw/4).Pedestrian(2,0)+(walk,rw/4).Pedestrian(3,1)+(walk,rw/4).Pedestrian(2,2);
+Pedestrian(2,2):=(seekBike,0.4).SeekBike(2,2)+(walk,rw/4).Pedestrian(1,2)+(walk,rw/4).Pedestrian(2,1)+(walk,rw/4).Pedestrian(3,2)+(walk,rw/4).Pedestrian(2,3);
+Pedestrian(2,3):=(seekBike,0.4).SeekBike(2,3)+(walk,rw/3).Pedestrian(1,3)+(walk,rw/3).Pedestrian(2,2)+(walk,rw/3).Pedestrian(3,3);
+Pedestrian(3,0):=(seekBike,0.4).SeekBike(3,0)+(walk,rw/2).Pedestrian(2,0)+(walk,rw/2).Pedestrian(3,1);
+Pedestrian(3,1):=(seekBike,0.4).SeekBike(3,1)+(walk,rw/3).Pedestrian(2,1)+(walk,rw/3).Pedestrian(3,0)+(walk,rw/3).Pedestrian(3,2);
+Pedestrian(3,2):=(seekBike,0.4).SeekBike(3,2)+(walk,rw/3).Pedestrian(2,2)+(walk,rw/3).Pedestrian(3,1)+(walk,rw/3).Pedestrian(3,3);
+Pedestrian(3,3):=(seekBike,0.4).SeekBike(3,3)+(walk,rw/2).Pedestrian(2,3)+(walk,rw/2).Pedestrian(3,2);
+
+SeekBike(0,0):=?(BikeAvailable_0,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(0,0)|/(|Bike(0,0)|+|Slot(0,0)|) }.Walk2Station_0(0,0)+?(BikeAvailable_1,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(0,1)|/(|Bike(0,1)|+|Slot(0,1)|) }.Walk2Station_1(0,0)+?(BikeAvailable_4,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(1,0)|/(|Bike(1,0)|+|Slot(1,0)|) }.Walk2Station_4(0,0);
+SeekBike(0,1):=?(BikeAvailable_0,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(0,0)|/(|Bike(0,0)|+|Slot(0,0)|) }.Walk2Station_0(0,1)+?(BikeAvailable_1,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(0,1)|/(|Bike(0,1)|+|Slot(0,1)|) }.Walk2Station_1(0,1)+?(BikeAvailable_2,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(0,2)|/(|Bike(0,2)|+|Slot(0,2)|) }.Walk2Station_2(0,1)+?(BikeAvailable_5,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(1,1)|/(|Bike(1,1)|+|Slot(1,1)|) }.Walk2Station_5(0,1);
+SeekBike(0,2):=?(BikeAvailable_1,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(0,1)|/(|Bike(0,1)|+|Slot(0,1)|) }.Walk2Station_1(0,2)+?(BikeAvailable_2,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(0,2)|/(|Bike(0,2)|+|Slot(0,2)|) }.Walk2Station_2(0,2)+?(BikeAvailable_3,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(0,3)|/(|Bike(0,3)|+|Slot(0,3)|) }.Walk2Station_3(0,2)+?(BikeAvailable_6,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(1,2)|/(|Bike(1,2)|+|Slot(1,2)|) }.Walk2Station_6(0,2);
+SeekBike(0,3):=?(BikeAvailable_2,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(0,2)|/(|Bike(0,2)|+|Slot(0,2)|) }.Walk2Station_2(0,3)+?(BikeAvailable_3,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(0,3)|/(|Bike(0,3)|+|Slot(0,3)|) }.Walk2Station_3(0,3)+?(BikeAvailable_7,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(1,3)|/(|Bike(1,3)|+|Slot(1,3)|) }.Walk2Station_7(0,3);
+SeekBike(1,0):=?(BikeAvailable_0,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(0,0)|/(|Bike(0,0)|+|Slot(0,0)|) }.Walk2Station_0(1,0)+?(BikeAvailable_4,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(1,0)|/(|Bike(1,0)|+|Slot(1,0)|) }.Walk2Station_4(1,0)+?(BikeAvailable_5,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(1,1)|/(|Bike(1,1)|+|Slot(1,1)|) }.Walk2Station_5(1,0)+?(BikeAvailable_8,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(2,0)|/(|Bike(2,0)|+|Slot(2,0)|) }.Walk2Station_8(1,0);
+SeekBike(1,1):=?(BikeAvailable_1,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(0,1)|/(|Bike(0,1)|+|Slot(0,1)|) }.Walk2Station_1(1,1)+?(BikeAvailable_4,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(1,0)|/(|Bike(1,0)|+|Slot(1,0)|) }.Walk2Station_4(1,1)+?(BikeAvailable_5,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(1,1)|/(|Bike(1,1)|+|Slot(1,1)|) }.Walk2Station_5(1,1)+?(BikeAvailable_6,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(1,2)|/(|Bike(1,2)|+|Slot(1,2)|) }.Walk2Station_6(1,1)+?(BikeAvailable_9,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(2,1)|/(|Bike(2,1)|+|Slot(2,1)|) }.Walk2Station_9(1,1);
+SeekBike(1,2):=?(BikeAvailable_2,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(0,2)|/(|Bike(0,2)|+|Slot(0,2)|) }.Walk2Station_2(1,2)+?(BikeAvailable_5,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(1,1)|/(|Bike(1,1)|+|Slot(1,1)|) }.Walk2Station_5(1,2)+?(BikeAvailable_6,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(1,2)|/(|Bike(1,2)|+|Slot(1,2)|) }.Walk2Station_6(1,2)+?(BikeAvailable_7,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(1,3)|/(|Bike(1,3)|+|Slot(1,3)|) }.Walk2Station_7(1,2)+?(BikeAvailable_10,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(2,2)|/(|Bike(2,2)|+|Slot(2,2)|) }.Walk2Station_10(1,2);
+SeekBike(1,3):=?(BikeAvailable_3,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(0,3)|/(|Bike(0,3)|+|Slot(0,3)|) }.Walk2Station_3(1,3)+?(BikeAvailable_6,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(1,2)|/(|Bike(1,2)|+|Slot(1,2)|) }.Walk2Station_6(1,3)+?(BikeAvailable_7,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(1,3)|/(|Bike(1,3)|+|Slot(1,3)|) }.Walk2Station_7(1,3)+?(BikeAvailable_11,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(2,3)|/(|Bike(2,3)|+|Slot(2,3)|) }.Walk2Station_11(1,3);
+SeekBike(2,0):=?(BikeAvailable_4,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(1,0)|/(|Bike(1,0)|+|Slot(1,0)|) }.Walk2Station_4(2,0)+?(BikeAvailable_8,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(2,0)|/(|Bike(2,0)|+|Slot(2,0)|) }.Walk2Station_8(2,0)+?(BikeAvailable_9,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(2,1)|/(|Bike(2,1)|+|Slot(2,1)|) }.Walk2Station_9(2,0)+?(BikeAvailable_12,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(3,0)|/(|Bike(3,0)|+|Slot(3,0)|) }.Walk2Station_12(2,0);
+SeekBike(2,1):=?(BikeAvailable_5,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(1,1)|/(|Bike(1,1)|+|Slot(1,1)|) }.Walk2Station_5(2,1)+?(BikeAvailable_8,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(2,0)|/(|Bike(2,0)|+|Slot(2,0)|) }.Walk2Station_8(2,1)+?(BikeAvailable_9,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(2,1)|/(|Bike(2,1)|+|Slot(2,1)|) }.Walk2Station_9(2,1)+?(BikeAvailable_10,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(2,2)|/(|Bike(2,2)|+|Slot(2,2)|) }.Walk2Station_10(2,1)+?(BikeAvailable_13,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(3,1)|/(|Bike(3,1)|+|Slot(3,1)|) }.Walk2Station_13(2,1);
+SeekBike(2,2):=?(BikeAvailable_6,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(1,2)|/(|Bike(1,2)|+|Slot(1,2)|) }.Walk2Station_6(2,2)+?(BikeAvailable_9,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(2,1)|/(|Bike(2,1)|+|Slot(2,1)|) }.Walk2Station_9(2,2)+?(BikeAvailable_10,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(2,2)|/(|Bike(2,2)|+|Slot(2,2)|) }.Walk2Station_10(2,2)+?(BikeAvailable_11,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(2,3)|/(|Bike(2,3)|+|Slot(2,3)|) }.Walk2Station_11(2,2)+?(BikeAvailable_14,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(3,2)|/(|Bike(3,2)|+|Slot(3,2)|) }.Walk2Station_14(2,2);
+SeekBike(2,3):=?(BikeAvailable_7,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(1,3)|/(|Bike(1,3)|+|Slot(1,3)|) }.Walk2Station_7(2,3)+?(BikeAvailable_10,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(2,2)|/(|Bike(2,2)|+|Slot(2,2)|) }.Walk2Station_10(2,3)+?(BikeAvailable_11,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(2,3)|/(|Bike(2,3)|+|Slot(2,3)|) }.Walk2Station_11(2,3)+?(BikeAvailable_15,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(3,3)|/(|Bike(3,3)|+|Slot(3,3)|) }.Walk2Station_15(2,3);
+SeekBike(3,0):=?(BikeAvailable_8,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(2,0)|/(|Bike(2,0)|+|Slot(2,0)|) }.Walk2Station_8(3,0)+?(BikeAvailable_12,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(3,0)|/(|Bike(3,0)|+|Slot(3,0)|) }.Walk2Station_12(3,0)+?(BikeAvailable_13,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(3,1)|/(|Bike(3,1)|+|Slot(3,1)|) }.Walk2Station_13(3,0);
+SeekBike(3,1):=?(BikeAvailable_9,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(2,1)|/(|Bike(2,1)|+|Slot(2,1)|) }.Walk2Station_9(3,1)+?(BikeAvailable_12,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(3,0)|/(|Bike(3,0)|+|Slot(3,0)|) }.Walk2Station_12(3,1)+?(BikeAvailable_13,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(3,1)|/(|Bike(3,1)|+|Slot(3,1)|) }.Walk2Station_13(3,1)+?(BikeAvailable_14,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(3,2)|/(|Bike(3,2)|+|Slot(3,2)|) }.Walk2Station_14(3,1);
+SeekBike(3,2):=?(BikeAvailable_10,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(2,2)|/(|Bike(2,2)|+|Slot(2,2)|) }.Walk2Station_10(3,2)+?(BikeAvailable_13,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(3,1)|/(|Bike(3,1)|+|Slot(3,1)|) }.Walk2Station_13(3,2)+?(BikeAvailable_14,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(3,2)|/(|Bike(3,2)|+|Slot(3,2)|) }.Walk2Station_14(3,2)+?(BikeAvailable_15,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(3,3)|/(|Bike(3,3)|+|Slot(3,3)|) }.Walk2Station_15(3,2);
+SeekBike(3,3):=?(BikeAvailable_11,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(2,3)|/(|Bike(2,3)|+|Slot(2,3)|) }.Walk2Station_11(3,3)+?(BikeAvailable_14,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(3,2)|/(|Bike(3,2)|+|Slot(3,2)|) }.Walk2Station_14(3,3)+?(BikeAvailable_15,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Bike(3,3)|/(|Bike(3,3)|+|Slot(3,3)|) }.Walk2Station_15(3,3);
+
+Walk2Station_0(0,0):=(W2S,0.2).CheckBikeNum(0,0);
+Walk2Station_1(0,0):=(W2S,0.2).CheckBikeNum(0,1);
+Walk2Station_4(0,0):=(W2S,0.2).CheckBikeNum(1,0);
+Walk2Station_0(0,1):=(W2S,0.2).CheckBikeNum(0,0);
+Walk2Station_1(0,1):=(W2S,0.2).CheckBikeNum(0,1);
+Walk2Station_2(0,1):=(W2S,0.2).CheckBikeNum(0,2);
+Walk2Station_5(0,1):=(W2S,0.2).CheckBikeNum(1,1);
+Walk2Station_1(0,2):=(W2S,0.2).CheckBikeNum(0,1);
+Walk2Station_2(0,2):=(W2S,0.2).CheckBikeNum(0,2);
+Walk2Station_3(0,2):=(W2S,0.2).CheckBikeNum(0,3);
+Walk2Station_6(0,2):=(W2S,0.2).CheckBikeNum(1,2);
+Walk2Station_2(0,3):=(W2S,0.2).CheckBikeNum(0,2);
+Walk2Station_3(0,3):=(W2S,0.2).CheckBikeNum(0,3);
+Walk2Station_7(0,3):=(W2S,0.2).CheckBikeNum(1,3);
+Walk2Station_0(1,0):=(W2S,0.2).CheckBikeNum(0,0);
+Walk2Station_4(1,0):=(W2S,0.2).CheckBikeNum(1,0);
+Walk2Station_5(1,0):=(W2S,0.2).CheckBikeNum(1,1);
+Walk2Station_8(1,0):=(W2S,0.2).CheckBikeNum(2,0);
+Walk2Station_1(1,1):=(W2S,0.2).CheckBikeNum(0,1);
+Walk2Station_4(1,1):=(W2S,0.2).CheckBikeNum(1,0);
+Walk2Station_5(1,1):=(W2S,0.2).CheckBikeNum(1,1);
+Walk2Station_6(1,1):=(W2S,0.2).CheckBikeNum(1,2);
+Walk2Station_9(1,1):=(W2S,0.2).CheckBikeNum(2,1);
+Walk2Station_2(1,2):=(W2S,0.2).CheckBikeNum(0,2);
+Walk2Station_5(1,2):=(W2S,0.2).CheckBikeNum(1,1);
+Walk2Station_6(1,2):=(W2S,0.2).CheckBikeNum(1,2);
+Walk2Station_7(1,2):=(W2S,0.2).CheckBikeNum(1,3);
+Walk2Station_10(1,2):=(W2S,0.2).CheckBikeNum(2,2);
+Walk2Station_3(1,3):=(W2S,0.2).CheckBikeNum(0,3);
+Walk2Station_6(1,3):=(W2S,0.2).CheckBikeNum(1,2);
+Walk2Station_7(1,3):=(W2S,0.2).CheckBikeNum(1,3);
+Walk2Station_11(1,3):=(W2S,0.2).CheckBikeNum(2,3);
+Walk2Station_4(2,0):=(W2S,0.2).CheckBikeNum(1,0);
+Walk2Station_8(2,0):=(W2S,0.2).CheckBikeNum(2,0);
+Walk2Station_9(2,0):=(W2S,0.2).CheckBikeNum(2,1);
+Walk2Station_12(2,0):=(W2S,0.2).CheckBikeNum(3,0);
+Walk2Station_5(2,1):=(W2S,0.2).CheckBikeNum(1,1);
+Walk2Station_8(2,1):=(W2S,0.2).CheckBikeNum(2,0);
+Walk2Station_9(2,1):=(W2S,0.2).CheckBikeNum(2,1);
+Walk2Station_10(2,1):=(W2S,0.2).CheckBikeNum(2,2);
+Walk2Station_13(2,1):=(W2S,0.2).CheckBikeNum(3,1);
+Walk2Station_6(2,2):=(W2S,0.2).CheckBikeNum(1,2);
+Walk2Station_9(2,2):=(W2S,0.2).CheckBikeNum(2,1);
+Walk2Station_10(2,2):=(W2S,0.2).CheckBikeNum(2,2);
+Walk2Station_11(2,2):=(W2S,0.2).CheckBikeNum(2,3);
+Walk2Station_14(2,2):=(W2S,0.2).CheckBikeNum(3,2);
+Walk2Station_7(2,3):=(W2S,0.2).CheckBikeNum(1,3);
+Walk2Station_10(2,3):=(W2S,0.2).CheckBikeNum(2,2);
+Walk2Station_11(2,3):=(W2S,0.2).CheckBikeNum(2,3);
+Walk2Station_15(2,3):=(W2S,0.2).CheckBikeNum(3,3);
+Walk2Station_8(3,0):=(W2S,0.2).CheckBikeNum(2,0);
+Walk2Station_12(3,0):=(W2S,0.2).CheckBikeNum(3,0);
+Walk2Station_13(3,0):=(W2S,0.2).CheckBikeNum(3,1);
+Walk2Station_9(3,1):=(W2S,0.2).CheckBikeNum(2,1);
+Walk2Station_12(3,1):=(W2S,0.2).CheckBikeNum(3,0);
+Walk2Station_13(3,1):=(W2S,0.2).CheckBikeNum(3,1);
+Walk2Station_14(3,1):=(W2S,0.2).CheckBikeNum(3,2);
+Walk2Station_10(3,2):=(W2S,0.2).CheckBikeNum(2,2);
+Walk2Station_13(3,2):=(W2S,0.2).CheckBikeNum(3,1);
+Walk2Station_14(3,2):=(W2S,0.2).CheckBikeNum(3,2);
+Walk2Station_15(3,2):=(W2S,0.2).CheckBikeNum(3,3);
+Walk2Station_11(3,3):=(W2S,0.2).CheckBikeNum(2,3);
+Walk2Station_14(3,3):=(W2S,0.2).CheckBikeNum(3,2);
+Walk2Station_15(3,3):=(W2S,0.2).CheckBikeNum(3,3);
+
+CheckBikeNum(0,0):=?(BikeAvailable_0,1)@Pr{|Bike(0,0)|/(|Bike(0,0)|+0.001)}.BorrowBike(0,0);
+CheckBikeNum(0,1):=?(BikeAvailable_1,1)@Pr{|Bike(0,1)|/(|Bike(0,1)|+0.001)}.BorrowBike(0,1);
+CheckBikeNum(0,2):=?(BikeAvailable_2,1)@Pr{|Bike(0,2)|/(|Bike(0,2)|+0.001)}.BorrowBike(0,2);
+CheckBikeNum(0,3):=?(BikeAvailable_3,1)@Pr{|Bike(0,3)|/(|Bike(0,3)|+0.001)}.BorrowBike(0,3);
+CheckBikeNum(1,0):=?(BikeAvailable_4,1)@Pr{|Bike(1,0)|/(|Bike(1,0)|+0.001)}.BorrowBike(1,0);
+CheckBikeNum(1,1):=?(BikeAvailable_5,1)@Pr{|Bike(1,1)|/(|Bike(1,1)|+0.001)}.BorrowBike(1,1);
+CheckBikeNum(1,2):=?(BikeAvailable_6,1)@Pr{|Bike(1,2)|/(|Bike(1,2)|+0.001)}.BorrowBike(1,2);
+CheckBikeNum(1,3):=?(BikeAvailable_7,1)@Pr{|Bike(1,3)|/(|Bike(1,3)|+0.001)}.BorrowBike(1,3);
+CheckBikeNum(2,0):=?(BikeAvailable_8,1)@Pr{|Bike(2,0)|/(|Bike(2,0)|+0.001)}.BorrowBike(2,0);
+CheckBikeNum(2,1):=?(BikeAvailable_9,1)@Pr{|Bike(2,1)|/(|Bike(2,1)|+0.001)}.BorrowBike(2,1);
+CheckBikeNum(2,2):=?(BikeAvailable_10,1)@Pr{|Bike(2,2)|/(|Bike(2,2)|+0.001)}.BorrowBike(2,2);
+CheckBikeNum(2,3):=?(BikeAvailable_11,1)@Pr{|Bike(2,3)|/(|Bike(2,3)|+0.001)}.BorrowBike(2,3);
+CheckBikeNum(3,0):=?(BikeAvailable_12,1)@Pr{|Bike(3,0)|/(|Bike(3,0)|+0.001)}.BorrowBike(3,0);
+CheckBikeNum(3,1):=?(BikeAvailable_13,1)@Pr{|Bike(3,1)|/(|Bike(3,1)|+0.001)}.BorrowBike(3,1);
+CheckBikeNum(3,2):=?(BikeAvailable_14,1)@Pr{|Bike(3,2)|/(|Bike(3,2)|+0.001)}.BorrowBike(3,2);
+CheckBikeNum(3,3):=?(BikeAvailable_15,1)@Pr{|Bike(3,3)|/(|Bike(3,3)|+0.001)}.BorrowBike(3,3);
+
+BorrowBike(0,0):=!!(Borrow,o)@IR{local}.Biker(0,0);
+BorrowBike(0,1):=!!(Borrow,o)@IR{local}.Biker(0,1);
+BorrowBike(0,2):=!!(Borrow,o)@IR{local}.Biker(0,2);
+BorrowBike(0,3):=!!(Borrow,o)@IR{local}.Biker(0,3);
+BorrowBike(1,0):=!!(Borrow,o)@IR{local}.Biker(1,0);
+BorrowBike(1,1):=!!(Borrow,o)@IR{local}.Biker(1,1);
+BorrowBike(1,2):=!!(Borrow,o)@IR{local}.Biker(1,2);
+BorrowBike(1,3):=!!(Borrow,o)@IR{local}.Biker(1,3);
+BorrowBike(2,0):=!!(Borrow,o)@IR{local}.Biker(2,0);
+BorrowBike(2,1):=!!(Borrow,o)@IR{local}.Biker(2,1);
+BorrowBike(2,2):=!!(Borrow,o)@IR{local}.Biker(2,2);
+BorrowBike(2,3):=!!(Borrow,o)@IR{local}.Biker(2,3);
+BorrowBike(3,0):=!!(Borrow,o)@IR{local}.Biker(3,0);
+BorrowBike(3,1):=!!(Borrow,o)@IR{local}.Biker(3,1);
+BorrowBike(3,2):=!!(Borrow,o)@IR{local}.Biker(3,2);
+BorrowBike(3,3):=!!(Borrow,o)@IR{local}.Biker(3,3);
+
+Biker(0,0):=(seekSlot,0.5).SeekSlot(0,0)+(ride,rb/2).Biker(1,0)+(ride,rb/2).Biker(0,1);
+Biker(0,1):=(seekSlot,0.5).SeekSlot(0,1)+(ride,rb/3).Biker(0,0)+(ride,rb/3).Biker(1,1)+(ride,rb/3).Biker(0,2);
+Biker(0,2):=(seekSlot,0.5).SeekSlot(0,2)+(ride,rb/3).Biker(0,1)+(ride,rb/3).Biker(1,2)+(ride,rb/3).Biker(0,3);
+Biker(0,3):=(seekSlot,0.5).SeekSlot(0,3)+(ride,rb/2).Biker(0,2)+(ride,rb/2).Biker(1,3);
+Biker(1,0):=(seekSlot,0.5).SeekSlot(1,0)+(ride,rb/3).Biker(0,0)+(ride,rb/3).Biker(2,0)+(ride,rb/3).Biker(1,1);
+Biker(1,1):=(seekSlot,0.5).SeekSlot(1,1)+(ride,rb/4).Biker(0,1)+(ride,rb/4).Biker(1,0)+(ride,rb/4).Biker(2,1)+(ride,rb/4).Biker(1,2);
+Biker(1,2):=(seekSlot,0.5).SeekSlot(1,2)+(ride,rb/4).Biker(0,2)+(ride,rb/4).Biker(1,1)+(ride,rb/4).Biker(2,2)+(ride,rb/4).Biker(1,3);
+Biker(1,3):=(seekSlot,0.5).SeekSlot(1,3)+(ride,rb/3).Biker(0,3)+(ride,rb/3).Biker(1,2)+(ride,rb/3).Biker(2,3);
+Biker(2,0):=(seekSlot,0.5).SeekSlot(2,0)+(ride,rb/3).Biker(1,0)+(ride,rb/3).Biker(3,0)+(ride,rb/3).Biker(2,1);
+Biker(2,1):=(seekSlot,0.5).SeekSlot(2,1)+(ride,rb/4).Biker(1,1)+(ride,rb/4).Biker(2,0)+(ride,rb/4).Biker(3,1)+(ride,rb/4).Biker(2,2);
+Biker(2,2):=(seekSlot,0.5).SeekSlot(2,2)+(ride,rb/4).Biker(1,2)+(ride,rb/4).Biker(2,1)+(ride,rb/4).Biker(3,2)+(ride,rb/4).Biker(2,3);
+Biker(2,3):=(seekSlot,0.5).SeekSlot(2,3)+(ride,rb/3).Biker(1,3)+(ride,rb/3).Biker(2,2)+(ride,rb/3).Biker(3,3);
+Biker(3,0):=(seekSlot,0.5).SeekSlot(3,0)+(ride,rb/2).Biker(2,0)+(ride,rb/2).Biker(3,1);
+Biker(3,1):=(seekSlot,0.5).SeekSlot(3,1)+(ride,rb/3).Biker(2,1)+(ride,rb/3).Biker(3,0)+(ride,rb/3).Biker(3,2);
+Biker(3,2):=(seekSlot,0.5).SeekSlot(3,2)+(ride,rb/3).Biker(2,2)+(ride,rb/3).Biker(3,1)+(ride,rb/3).Biker(3,3);
+Biker(3,3):=(seekSlot,0.5).SeekSlot(3,3)+(ride,rb/2).Biker(2,3)+(ride,rb/2).Biker(3,2);
+
+SeekSlot(0,0):=?(SlotAvailable_0,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(0,0)|/(|Bike(0,0)|+|Slot(0,0)|) }.Ride2Station_0(0,0)+?(SlotAvailable_1,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(0,1)|/(|Bike(0,1)|+|Slot(0,1)|) }.Ride2Station_1(0,0)+?(SlotAvailable_4,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(1,0)|/(|Bike(1,0)|+|Slot(1,0)|) }.Ride2Station_4(0,0);
+SeekSlot(0,1):=?(SlotAvailable_0,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(0,0)|/(|Bike(0,0)|+|Slot(0,0)|) }.Ride2Station_0(0,1)+?(SlotAvailable_1,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(0,1)|/(|Bike(0,1)|+|Slot(0,1)|) }.Ride2Station_1(0,1)+?(SlotAvailable_2,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(0,2)|/(|Bike(0,2)|+|Slot(0,2)|) }.Ride2Station_2(0,1)+?(SlotAvailable_5,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(1,1)|/(|Bike(1,1)|+|Slot(1,1)|) }.Ride2Station_5(0,1);
+SeekSlot(0,2):=?(SlotAvailable_1,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(0,1)|/(|Bike(0,1)|+|Slot(0,1)|) }.Ride2Station_1(0,2)+?(SlotAvailable_2,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(0,2)|/(|Bike(0,2)|+|Slot(0,2)|) }.Ride2Station_2(0,2)+?(SlotAvailable_3,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(0,3)|/(|Bike(0,3)|+|Slot(0,3)|) }.Ride2Station_3(0,2)+?(SlotAvailable_6,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(1,2)|/(|Bike(1,2)|+|Slot(1,2)|) }.Ride2Station_6(0,2);
+SeekSlot(0,3):=?(SlotAvailable_2,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(0,2)|/(|Bike(0,2)|+|Slot(0,2)|) }.Ride2Station_2(0,3)+?(SlotAvailable_3,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(0,3)|/(|Bike(0,3)|+|Slot(0,3)|) }.Ride2Station_3(0,3)+?(SlotAvailable_7,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(1,3)|/(|Bike(1,3)|+|Slot(1,3)|) }.Ride2Station_7(0,3);
+SeekSlot(1,0):=?(SlotAvailable_0,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(0,0)|/(|Bike(0,0)|+|Slot(0,0)|) }.Ride2Station_0(1,0)+?(SlotAvailable_4,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(1,0)|/(|Bike(1,0)|+|Slot(1,0)|) }.Ride2Station_4(1,0)+?(SlotAvailable_5,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(1,1)|/(|Bike(1,1)|+|Slot(1,1)|) }.Ride2Station_5(1,0)+?(SlotAvailable_8,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(2,0)|/(|Bike(2,0)|+|Slot(2,0)|) }.Ride2Station_8(1,0);
+SeekSlot(1,1):=?(SlotAvailable_1,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(0,1)|/(|Bike(0,1)|+|Slot(0,1)|) }.Ride2Station_1(1,1)+?(SlotAvailable_4,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(1,0)|/(|Bike(1,0)|+|Slot(1,0)|) }.Ride2Station_4(1,1)+?(SlotAvailable_5,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(1,1)|/(|Bike(1,1)|+|Slot(1,1)|) }.Ride2Station_5(1,1)+?(SlotAvailable_6,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(1,2)|/(|Bike(1,2)|+|Slot(1,2)|) }.Ride2Station_6(1,1)+?(SlotAvailable_9,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(2,1)|/(|Bike(2,1)|+|Slot(2,1)|) }.Ride2Station_9(1,1);
+SeekSlot(1,2):=?(SlotAvailable_2,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(0,2)|/(|Bike(0,2)|+|Slot(0,2)|) }.Ride2Station_2(1,2)+?(SlotAvailable_5,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(1,1)|/(|Bike(1,1)|+|Slot(1,1)|) }.Ride2Station_5(1,2)+?(SlotAvailable_6,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(1,2)|/(|Bike(1,2)|+|Slot(1,2)|) }.Ride2Station_6(1,2)+?(SlotAvailable_7,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(1,3)|/(|Bike(1,3)|+|Slot(1,3)|) }.Ride2Station_7(1,2)+?(SlotAvailable_10,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(2,2)|/(|Bike(2,2)|+|Slot(2,2)|) }.Ride2Station_10(1,2);
+SeekSlot(1,3):=?(SlotAvailable_3,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(0,3)|/(|Bike(0,3)|+|Slot(0,3)|) }.Ride2Station_3(1,3)+?(SlotAvailable_6,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(1,2)|/(|Bike(1,2)|+|Slot(1,2)|) }.Ride2Station_6(1,3)+?(SlotAvailable_7,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(1,3)|/(|Bike(1,3)|+|Slot(1,3)|) }.Ride2Station_7(1,3)+?(SlotAvailable_11,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(2,3)|/(|Bike(2,3)|+|Slot(2,3)|) }.Ride2Station_11(1,3);
+SeekSlot(2,0):=?(SlotAvailable_4,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(1,0)|/(|Bike(1,0)|+|Slot(1,0)|) }.Ride2Station_4(2,0)+?(SlotAvailable_8,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(2,0)|/(|Bike(2,0)|+|Slot(2,0)|) }.Ride2Station_8(2,0)+?(SlotAvailable_9,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(2,1)|/(|Bike(2,1)|+|Slot(2,1)|) }.Ride2Station_9(2,0)+?(SlotAvailable_12,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(3,0)|/(|Bike(3,0)|+|Slot(3,0)|) }.Ride2Station_12(2,0);
+SeekSlot(2,1):=?(SlotAvailable_5,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(1,1)|/(|Bike(1,1)|+|Slot(1,1)|) }.Ride2Station_5(2,1)+?(SlotAvailable_8,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(2,0)|/(|Bike(2,0)|+|Slot(2,0)|) }.Ride2Station_8(2,1)+?(SlotAvailable_9,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(2,1)|/(|Bike(2,1)|+|Slot(2,1)|) }.Ride2Station_9(2,1)+?(SlotAvailable_10,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(2,2)|/(|Bike(2,2)|+|Slot(2,2)|) }.Ride2Station_10(2,1)+?(SlotAvailable_13,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(3,1)|/(|Bike(3,1)|+|Slot(3,1)|) }.Ride2Station_13(2,1);
+SeekSlot(2,2):=?(SlotAvailable_6,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(1,2)|/(|Bike(1,2)|+|Slot(1,2)|) }.Ride2Station_6(2,2)+?(SlotAvailable_9,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(2,1)|/(|Bike(2,1)|+|Slot(2,1)|) }.Ride2Station_9(2,2)+?(SlotAvailable_10,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(2,2)|/(|Bike(2,2)|+|Slot(2,2)|) }.Ride2Station_10(2,2)+?(SlotAvailable_11,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(2,3)|/(|Bike(2,3)|+|Slot(2,3)|) }.Ride2Station_11(2,2)+?(SlotAvailable_14,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(3,2)|/(|Bike(3,2)|+|Slot(3,2)|) }.Ride2Station_14(2,2);
+SeekSlot(2,3):=?(SlotAvailable_7,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(1,3)|/(|Bike(1,3)|+|Slot(1,3)|) }.Ride2Station_7(2,3)+?(SlotAvailable_10,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(2,2)|/(|Bike(2,2)|+|Slot(2,2)|) }.Ride2Station_10(2,3)+?(SlotAvailable_11,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(2,3)|/(|Bike(2,3)|+|Slot(2,3)|) }.Ride2Station_11(2,3)+?(SlotAvailable_15,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(3,3)|/(|Bike(3,3)|+|Slot(3,3)|) }.Ride2Station_15(2,3);
+SeekSlot(3,0):=?(SlotAvailable_8,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(2,0)|/(|Bike(2,0)|+|Slot(2,0)|) }.Ride2Station_8(3,0)+?(SlotAvailable_12,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(3,0)|/(|Bike(3,0)|+|Slot(3,0)|) }.Ride2Station_12(3,0)+?(SlotAvailable_13,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(3,1)|/(|Bike(3,1)|+|Slot(3,1)|) }.Ride2Station_13(3,0);
+SeekSlot(3,1):=?(SlotAvailable_9,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(2,1)|/(|Bike(2,1)|+|Slot(2,1)|) }.Ride2Station_9(3,1)+?(SlotAvailable_12,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(3,0)|/(|Bike(3,0)|+|Slot(3,0)|) }.Ride2Station_12(3,1)+?(SlotAvailable_13,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(3,1)|/(|Bike(3,1)|+|Slot(3,1)|) }.Ride2Station_13(3,1)+?(SlotAvailable_14,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(3,2)|/(|Bike(3,2)|+|Slot(3,2)|) }.Ride2Station_14(3,1);
+SeekSlot(3,2):=?(SlotAvailable_10,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(2,2)|/(|Bike(2,2)|+|Slot(2,2)|) }.Ride2Station_10(3,2)+?(SlotAvailable_13,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(3,1)|/(|Bike(3,1)|+|Slot(3,1)|) }.Ride2Station_13(3,2)+?(SlotAvailable_14,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(3,2)|/(|Bike(3,2)|+|Slot(3,2)|) }.Ride2Station_14(3,2)+?(SlotAvailable_15,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(3,3)|/(|Bike(3,3)|+|Slot(3,3)|) }.Ride2Station_15(3,2);
+SeekSlot(3,3):=?(SlotAvailable_11,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(2,3)|/(|Bike(2,3)|+|Slot(2,3)|) }.Ride2Station_11(3,3)+?(SlotAvailable_14,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(3,2)|/(|Bike(3,2)|+|Slot(3,2)|) }.Ride2Station_14(3,3)+?(SlotAvailable_15,1)@Pr{0.5*(d-dist(loc_s,loc_r))/d+0.5*|Slot(3,3)|/(|Bike(3,3)|+|Slot(3,3)|) }.Ride2Station_15(3,3);
+
+Ride2Station_0(0,0):=(R2S,0.4).CheckSlotNum(0,0);
+Ride2Station_1(0,0):=(R2S,0.4).CheckSlotNum(0,1);
+Ride2Station_4(0,0):=(R2S,0.4).CheckSlotNum(1,0);
+Ride2Station_0(0,1):=(R2S,0.4).CheckSlotNum(0,0);
+Ride2Station_1(0,1):=(R2S,0.4).CheckSlotNum(0,1);
+Ride2Station_2(0,1):=(R2S,0.4).CheckSlotNum(0,2);
+Ride2Station_5(0,1):=(R2S,0.4).CheckSlotNum(1,1);
+Ride2Station_1(0,2):=(R2S,0.4).CheckSlotNum(0,1);
+Ride2Station_2(0,2):=(R2S,0.4).CheckSlotNum(0,2);
+Ride2Station_3(0,2):=(R2S,0.4).CheckSlotNum(0,3);
+Ride2Station_6(0,2):=(R2S,0.4).CheckSlotNum(1,2);
+Ride2Station_2(0,3):=(R2S,0.4).CheckSlotNum(0,2);
+Ride2Station_3(0,3):=(R2S,0.4).CheckSlotNum(0,3);
+Ride2Station_7(0,3):=(R2S,0.4).CheckSlotNum(1,3);
+Ride2Station_0(1,0):=(R2S,0.4).CheckSlotNum(0,0);
+Ride2Station_4(1,0):=(R2S,0.4).CheckSlotNum(1,0);
+Ride2Station_5(1,0):=(R2S,0.4).CheckSlotNum(1,1);
+Ride2Station_8(1,0):=(R2S,0.4).CheckSlotNum(2,0);
+Ride2Station_1(1,1):=(R2S,0.4).CheckSlotNum(0,1);
+Ride2Station_4(1,1):=(R2S,0.4).CheckSlotNum(1,0);
+Ride2Station_5(1,1):=(R2S,0.4).CheckSlotNum(1,1);
+Ride2Station_6(1,1):=(R2S,0.4).CheckSlotNum(1,2);
+Ride2Station_9(1,1):=(R2S,0.4).CheckSlotNum(2,1);
+Ride2Station_2(1,2):=(R2S,0.4).CheckSlotNum(0,2);
+Ride2Station_5(1,2):=(R2S,0.4).CheckSlotNum(1,1);
+Ride2Station_6(1,2):=(R2S,0.4).CheckSlotNum(1,2);
+Ride2Station_7(1,2):=(R2S,0.4).CheckSlotNum(1,3);
+Ride2Station_10(1,2):=(R2S,0.4).CheckSlotNum(2,2);
+Ride2Station_3(1,3):=(R2S,0.4).CheckSlotNum(0,3);
+Ride2Station_6(1,3):=(R2S,0.4).CheckSlotNum(1,2);
+Ride2Station_7(1,3):=(R2S,0.4).CheckSlotNum(1,3);
+Ride2Station_11(1,3):=(R2S,0.4).CheckSlotNum(2,3);
+Ride2Station_4(2,0):=(R2S,0.4).CheckSlotNum(1,0);
+Ride2Station_8(2,0):=(R2S,0.4).CheckSlotNum(2,0);
+Ride2Station_9(2,0):=(R2S,0.4).CheckSlotNum(2,1);
+Ride2Station_12(2,0):=(R2S,0.4).CheckSlotNum(3,0);
+Ride2Station_5(2,1):=(R2S,0.4).CheckSlotNum(1,1);
+Ride2Station_8(2,1):=(R2S,0.4).CheckSlotNum(2,0);
+Ride2Station_9(2,1):=(R2S,0.4).CheckSlotNum(2,1);
+Ride2Station_10(2,1):=(R2S,0.4).CheckSlotNum(2,2);
+Ride2Station_13(2,1):=(R2S,0.4).CheckSlotNum(3,1);
+Ride2Station_6(2,2):=(R2S,0.4).CheckSlotNum(1,2);
+Ride2Station_9(2,2):=(R2S,0.4).CheckSlotNum(2,1);
+Ride2Station_10(2,2):=(R2S,0.4).CheckSlotNum(2,2);
+Ride2Station_11(2,2):=(R2S,0.4).CheckSlotNum(2,3);
+Ride2Station_14(2,2):=(R2S,0.4).CheckSlotNum(3,2);
+Ride2Station_7(2,3):=(R2S,0.4).CheckSlotNum(1,3);
+Ride2Station_10(2,3):=(R2S,0.4).CheckSlotNum(2,2);
+Ride2Station_11(2,3):=(R2S,0.4).CheckSlotNum(2,3);
+Ride2Station_15(2,3):=(R2S,0.4).CheckSlotNum(3,3);
+Ride2Station_8(3,0):=(R2S,0.4).CheckSlotNum(2,0);
+Ride2Station_12(3,0):=(R2S,0.4).CheckSlotNum(3,0);
+Ride2Station_13(3,0):=(R2S,0.4).CheckSlotNum(3,1);
+Ride2Station_9(3,1):=(R2S,0.4).CheckSlotNum(2,1);
+Ride2Station_12(3,1):=(R2S,0.4).CheckSlotNum(3,0);
+Ride2Station_13(3,1):=(R2S,0.4).CheckSlotNum(3,1);
+Ride2Station_14(3,1):=(R2S,0.4).CheckSlotNum(3,2);
+Ride2Station_10(3,2):=(R2S,0.4).CheckSlotNum(2,2);
+Ride2Station_13(3,2):=(R2S,0.4).CheckSlotNum(3,1);
+Ride2Station_14(3,2):=(R2S,0.4).CheckSlotNum(3,2);
+Ride2Station_15(3,2):=(R2S,0.4).CheckSlotNum(3,3);
+Ride2Station_11(3,3):=(R2S,0.4).CheckSlotNum(2,3);
+Ride2Station_14(3,3):=(R2S,0.4).CheckSlotNum(3,2);
+Ride2Station_15(3,3):=(R2S,0.4).CheckSlotNum(3,3);
+
+CheckSlotNum(0,0):=?(SlotAvailable_0,1)@Pr{|Slot(0,0)|/(|Slot(0,0)|+0.001)}.ReturnBike(0,0);
+CheckSlotNum(0,1):=?(SlotAvailable_1,1)@Pr{|Slot(0,1)|/(|Slot(0,1)|+0.001)}.ReturnBike(0,1);
+CheckSlotNum(0,2):=?(SlotAvailable_2,1)@Pr{|Slot(0,2)|/(|Slot(0,2)|+0.001)}.ReturnBike(0,2);
+CheckSlotNum(0,3):=?(SlotAvailable_3,1)@Pr{|Slot(0,3)|/(|Slot(0,3)|+0.001)}.ReturnBike(0,3);
+CheckSlotNum(1,0):=?(SlotAvailable_4,1)@Pr{|Slot(1,0)|/(|Slot(1,0)|+0.001)}.ReturnBike(1,0);
+CheckSlotNum(1,1):=?(SlotAvailable_5,1)@Pr{|Slot(1,1)|/(|Slot(1,1)|+0.001)}.ReturnBike(1,1);
+CheckSlotNum(1,2):=?(SlotAvailable_6,1)@Pr{|Slot(1,2)|/(|Slot(1,2)|+0.001)}.ReturnBike(1,2);
+CheckSlotNum(1,3):=?(SlotAvailable_7,1)@Pr{|Slot(1,3)|/(|Slot(1,3)|+0.001)}.ReturnBike(1,3);
+CheckSlotNum(2,0):=?(SlotAvailable_8,1)@Pr{|Slot(2,0)|/(|Slot(2,0)|+0.001)}.ReturnBike(2,0);
+CheckSlotNum(2,1):=?(SlotAvailable_9,1)@Pr{|Slot(2,1)|/(|Slot(2,1)|+0.001)}.ReturnBike(2,1);
+CheckSlotNum(2,2):=?(SlotAvailable_10,1)@Pr{|Slot(2,2)|/(|Slot(2,2)|+0.001)}.ReturnBike(2,2);
+CheckSlotNum(2,3):=?(SlotAvailable_11,1)@Pr{|Slot(2,3)|/(|Slot(2,3)|+0.001)}.ReturnBike(2,3);
+CheckSlotNum(3,0):=?(SlotAvailable_12,1)@Pr{|Slot(3,0)|/(|Slot(3,0)|+0.001)}.ReturnBike(3,0);
+CheckSlotNum(3,1):=?(SlotAvailable_13,1)@Pr{|Slot(3,1)|/(|Slot(3,1)|+0.001)}.ReturnBike(3,1);
+CheckSlotNum(3,2):=?(SlotAvailable_14,1)@Pr{|Slot(3,2)|/(|Slot(3,2)|+0.001)}.ReturnBike(3,2);
+CheckSlotNum(3,3):=?(SlotAvailable_15,1)@Pr{|Slot(3,3)|/(|Slot(3,3)|+0.001)}.ReturnBike(3,3);
+
+ReturnBike(0,0):=!!(Return,o)@IR{local}.Pedestrian(0,0);
+ReturnBike(0,1):=!!(Return,o)@IR{local}.Pedestrian(0,1);
+ReturnBike(0,2):=!!(Return,o)@IR{local}.Pedestrian(0,2);
+ReturnBike(0,3):=!!(Return,o)@IR{local}.Pedestrian(0,3);
+ReturnBike(1,0):=!!(Return,o)@IR{local}.Pedestrian(1,0);
+ReturnBike(1,1):=!!(Return,o)@IR{local}.Pedestrian(1,1);
+ReturnBike(1,2):=!!(Return,o)@IR{local}.Pedestrian(1,2);
+ReturnBike(1,3):=!!(Return,o)@IR{local}.Pedestrian(1,3);
+ReturnBike(2,0):=!!(Return,o)@IR{local}.Pedestrian(2,0);
+ReturnBike(2,1):=!!(Return,o)@IR{local}.Pedestrian(2,1);
+ReturnBike(2,2):=!!(Return,o)@IR{local}.Pedestrian(2,2);
+ReturnBike(2,3):=!!(Return,o)@IR{local}.Pedestrian(2,3);
+ReturnBike(3,0):=!!(Return,o)@IR{local}.Pedestrian(3,0);
+ReturnBike(3,1):=!!(Return,o)@IR{local}.Pedestrian(3,1);
+ReturnBike(3,2):=!!(Return,o)@IR{local}.Pedestrian(3,2);
+ReturnBike(3,3):=!!(Return,o)@IR{local}.Pedestrian(3,3);
+
+
+#agents
+Pedestrian(0,0)[25] || Biker(0,0)[5] || Slot(0,0)[5] || Station(0,0) || Bike(0,0)[10] || 
+Pedestrian(0,1)[25] || Biker(0,1)[5] || Slot(0,1)[5] || Station(0,1) || Bike(0,1)[10] || 
+Pedestrian(0,2)[25] || Biker(0,2)[5] || Slot(0,2)[5] || Station(0,2) || Bike(0,2)[10] || 
+Pedestrian(0,3)[25] || Biker(0,3)[5] || Slot(0,3)[5] || Station(0,3) || Bike(0,3)[10] || 
+Pedestrian(1,0)[25] || Biker(1,0)[5] || Slot(1,0)[5] || Station(1,0) || Bike(1,0)[10] || 
+Pedestrian(1,1)[25] || Biker(1,1)[5] || Slot(1,1)[5] || Station(1,1) || Bike(1,1)[10] || 
+Pedestrian(1,2)[25] || Biker(1,2)[5] || Slot(1,2)[5] || Station(1,2) || Bike(1,2)[10] || 
+Pedestrian(1,3)[25] || Biker(1,3)[5] || Slot(1,3)[5] || Station(1,3) || Bike(1,3)[10] || 
+Pedestrian(2,0)[25] || Biker(2,0)[5] || Slot(2,0)[5] || Station(2,0) || Bike(2,0)[10] || 
+Pedestrian(2,1)[25] || Biker(2,1)[5] || Slot(2,1)[5] || Station(2,1) || Bike(2,1)[10] || 
+Pedestrian(2,2)[25] || Biker(2,2)[5] || Slot(2,2)[5] || Station(2,2) || Bike(2,2)[10] || 
+Pedestrian(2,3)[25] || Biker(2,3)[5] || Slot(2,3)[5] || Station(2,3) || Bike(2,3)[10] || 
+Pedestrian(3,0)[25] || Biker(3,0)[5] || Slot(3,0)[5] || Station(3,0) || Bike(3,0)[10] || 
+Pedestrian(3,1)[25] || Biker(3,1)[5] || Slot(3,1)[5] || Station(3,1) || Bike(3,1)[10] || 
+Pedestrian(3,2)[25] || Biker(3,2)[5] || Slot(3,2)[5] || Station(3,2) || Bike(3,2)[10] || 
+Pedestrian(3,3)[25] || Biker(3,3)[5] || Slot(3,3)[5] || Station(3,3) || Bike(3,3)[10]
